@@ -1,0 +1,109 @@
+﻿<Window x:Class="RingClock.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:custom="clr-namespace:RingClock"
+        Title="MainWindow" Height="432" Width="432"
+        WindowStyle="None"
+        Background="#01000000"
+        BorderThickness="0"
+        AllowsTransparency="True"
+        ShowInTaskbar="False" Loaded="Window_Loaded"
+        TextOptions.TextFormattingMode="Display" MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave">
+    
+    <Window.Resources>
+        
+        <Style x:Key="ellipseStyle" TargetType="{x:Type Ellipse}">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Stroke" Value="#55000000" />
+            <Setter Property="StrokeThickness" Value="24" />
+            <Setter Property="SnapsToDevicePixels" Value="false"/>
+        </Style>
+        
+        <Style x:Key="ButtonFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="0" SnapsToDevicePixels="false" Stroke="{DynamicResource {x:Static Colors.SkyBlue}}" StrokeThickness="1" StrokeDashArray="1 2" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="MetroButton" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+            <Setter Property="Background" Value="#EEEEEEEE"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border
+                                x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" />
+
+                                                            <ContentPresenter
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="{TemplateBinding Padding}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                RecognizesAccessKey="True" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Margin" Value="1"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <!--<Setter Property="Background" Value="DimGray"/>-->
+                                <Setter Property="Foreground" Value="SkyBlue"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="SkyBlue"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
+    <Canvas Name="canvas" MouseEnter="Window_MouseEnter">
+
+        <Ellipse Name="bgEllipse" Width="432" Height="432" Fill="#55000000" SnapsToDevicePixels="False"/>
+
+        <Ellipse Name="secondEllipse" Width="432" Height="432"  Tag="Seconds" MouseEnter="ellipse_MouseEnter" MouseLeave="ellipse_MouseLeave" Style="{StaticResource ellipseStyle}"/>
+
+        <Ellipse Name="minuteEllipse" Width="374" Height="374" MouseEnter="ellipse_MouseEnter" MouseLeave="ellipse_MouseLeave" Tag="Minutes" Style="{StaticResource ellipseStyle}" Canvas.Left="29" Canvas.Top="29"/>
+
+        <Ellipse Name="hourEllipse" Width="316" Height="316" MouseEnter="ellipse_MouseEnter" MouseLeave="ellipse_MouseLeave" Tag="Hours" Style="{StaticResource ellipseStyle}" Canvas.Left="58" Canvas.Top="58"/>
+
+        <Ellipse Name="dowEllipse" Width="258" Height="258" MouseEnter="ellipse_MouseEnter" MouseLeave="ellipse_MouseLeave" Tag="Day of week" Style="{StaticResource ellipseStyle}" Canvas.Left="87" Canvas.Top="87"/>
+
+        <Ellipse Name="domEllipse" Width="200" Height="200" MouseLeave="ellipse_MouseLeave" Tag="Day of month" Style="{StaticResource ellipseStyle}" Canvas.Left="116" Canvas.Top="116"/>
+
+        <Ellipse Name="textEllipse" Fill="#55000000" SnapsToDevicePixels="False"/>
+
+        <TextBlock x:Name="timeText" Background="Transparent" Foreground="#FFFFFFFF" Height="38" Width="90" TextWrapping="Wrap" FontFamily="Ubuntu" Text="00:00:00 00/00/0000" TextAlignment="Center" FontSize="16" Canvas.Left="172" Canvas.Top="192"/>
+
+        <Button Name="btnExit" Style="{StaticResource MetroButton}" Background="Transparent" Content="x"  Click="btnExit_Click" Canvas.Left="416" Canvas.Top="6"/>
+
+        <custom:Arc x:Name="secondArc" Stroke="#FFFFFFFF" SnapsToDevicePixels="False" StartAngle="-1.57"  EndAngle="-1.57"  SmallAngle="True" Radius="204" Canvas.Top="216" Canvas.Left="216" StrokeThickness="4" Tag="Seconds"/>
+
+        <custom:Arc x:Name="minuteArc" Stroke="#FFFFFFFF" SnapsToDevicePixels="False" StartAngle="-1.57"  EndAngle="-1.57"  SmallAngle="True" Radius="175" Canvas.Top="187" Canvas.Left="187" StrokeThickness="4" Tag="Minutes"/>
+
+        <custom:Arc x:Name="hourArc" Stroke="#FFFFFFFF" SnapsToDevicePixels="False" StartAngle="-1.57"  EndAngle="-1.57"  SmallAngle="True" Radius="146" Canvas.Top="158" Canvas.Left="158" StrokeThickness="4" Tag="Hours"/>
+
+        <custom:Arc x:Name="dowArc" Stroke="#FFFFFFFF" SnapsToDevicePixels="False" StartAngle="-1.57"  EndAngle="-1.57"  SmallAngle="True" Radius="117" Canvas.Top="129" Canvas.Left="129" StrokeThickness="4" Tag="Day of week"/>
+
+        <custom:Arc x:Name="domArc" Stroke="#FFFFFFFF" SnapsToDevicePixels="False" StartAngle="-1.57"  EndAngle="-1.57"  SmallAngle="True" Radius="88" Canvas.Top="100" Canvas.Left="100" StrokeThickness="4" Tag="Day of month"/>
+
+    </Canvas>
+
+</Window>

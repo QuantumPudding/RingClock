@@ -1,0 +1,16 @@
+d:\users\tom\documents\visual studio 2012\Projects\RingClock\bin\Debug\RingClock.exe.config
+d:\users\tom\documents\visual studio 2012\Projects\RingClock\bin\Debug\RingClock.exe
+d:\users\tom\documents\visual studio 2012\Projects\RingClock\bin\Debug\RingClock.pdb
+d:\users\tom\documents\visual studio 2012\Projects\RingClock\obj\Debug\RingClock.csprojResolveAssemblyReference.cache
+d:\users\tom\documents\visual studio 2012\Projects\RingClock\obj\Debug\MainWindow.baml
+d:\users\tom\documents\visual studio 2012\Projects\RingClock\obj\Debug\MainWindow.g.cs
+d:\users\tom\documents\visual studio 2012\Projects\RingClock\obj\Debug\App.g.cs
+d:\users\tom\documents\visual studio 2012\Projects\RingClock\obj\Debug\RingClock_MarkupCompile.cache
+d:\users\tom\documents\visual studio 2012\Projects\RingClock\obj\Debug\RingClock.g.resources
+d:\users\tom\documents\visual studio 2012\Projects\RingClock\obj\Debug\RingClock.Properties.Resources.resources
+d:\users\tom\documents\visual studio 2012\Projects\RingClock\obj\Debug\RingClock.csproj.GenerateResource.Cache
+d:\users\tom\documents\visual studio 2012\Projects\RingClock\obj\Debug\RingClock.exe
+d:\users\tom\documents\visual studio 2012\Projects\RingClock\obj\Debug\RingClock.pdb
+d:\users\tom\documents\visual studio 2012\Projects\RingClock\obj\Debug\GeneratedInternalTypeHelper.g.cs
+d:\users\tom\documents\visual studio 2012\Projects\RingClock\obj\Debug\RingClock_MarkupCompile.lref
+d:\users\tom\documents\visual studio 2012\Projects\RingClock\obj\Debug\Dictionary1.baml
